@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margemAtividades"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/corLabels"
+        android:padding="@dimen/paddingLabels"
+        android:text="@string/temperatura"
+        android:textColor="@color/corTextoLabels" />
+
+    <EditText
+        android:id="@+id/editTextTemperatura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/corInputs"
+        android:ems="10"
+        android:hint="@string/temperatura"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:padding="@dimen/paddingCaixasTexto" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacoEntreInputs"
+        android:background="@color/corLabels"
+        android:padding="@dimen/paddingLabels"
+        android:textColor="@color/corTextoLabels"
+        android:text="@string/unidade"
+    />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/corInputs">
+
+        <RadioButton
+            android:id="@+id/radioButtonFahrenheit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fahrenheit" />
+
+        <RadioButton
+            android:id="@+id/radioButtonCelcius"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/celsius" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonConverter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacoEntreInputs"
+        android:onClick="mostraTemperatura"
+        android:text="@string/coverter"
+        app:backgroundTint="@color/corBotoes" />
+</LinearLayout>
