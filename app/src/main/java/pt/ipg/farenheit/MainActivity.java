@@ -9,6 +9,8 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TEMPERATURA = "pt.ipg.farenheit.TEMPERATURA";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Intent intent = new Intent(this, ConsultarTemperaturaActivity.class);
-        intent.putExtra("TEMPERATURA", temperatura);
+        intent.putExtra(TEMPERATURA, temperatura);
         startActivity(intent);
     }
 }
