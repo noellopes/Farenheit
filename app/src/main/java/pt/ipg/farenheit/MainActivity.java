@@ -10,7 +10,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class MainActivity extends AppCompatActivity {
+
+    private Snackbar snackbar = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,15 +39,30 @@ public class MainActivity extends AppCompatActivity {
         RadioButton radioButtonCelcius = findViewById(R.id.radioButtonCelcius);
         RadioButton radioButtonFahrenheit = findViewById(R.id.radioButtonFahrenheit);
 
+        boolean especificouUnidades;
         if (radioButtonCelcius.isChecked()) {
             DadosApp.temperatura = new TemperaturaCelsius(temperatura);
+            especificouUnidades = true;
         } else if (radioButtonFahrenheit.isChecked()) {
             DadosApp.temperatura = new TemperaturaFahrenheit(temperatura);
+            especificouUnidades = true;
+        } else {
+            especificouUnidades = false;
+        }
+
+        if (especificouUnidades) {
+            if (snackbar != null) {
+                snackbar.dismiss();
+                snackbar = null;
+            }
         } else {
             radioButtonCelcius.setError("Indique as unidades da temperatura");
             radioButtonFahrenheit.setError("Indique as unidades da temperatura");
 
-            Toast.makeText(this, "Indique as unidades da temperatura", Toast.LENGTH_LONG).show();
+            if (snackbar == null) {
+                snackbar = Snackbar.make(radioButtonCelcius, "Indique as unidades da temperatura", Snackbar.LENGTH_INDEFINITE);
+            }
+            snackbar.show();
 
             return;
         }
